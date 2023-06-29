@@ -15,6 +15,7 @@ RUN npm install \
 FROM  nginx
 
 WORKDIR /app/
+RUN ls
 COPY /app/dist /usr/share/nginx/html/
 COPY /app/default.conf /etc/nginx/conf.d/
 
