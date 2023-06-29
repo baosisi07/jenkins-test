@@ -1,20 +1,15 @@
 # 使用 Node.js 16 作为基础镜像
 FROM node:16
 
-# 在容器中创建工作目录
-WORKDIR /app
+# 拷贝整个应用程序到工作目录
+COPY . /app/
 
-# 拷贝 package.json 和 package-lock.json 到工作目录
-COPY package*.json ./
+# 在容器中创建工作目录
+WORKDIR /app/
 
 # 安装依赖
-RUN npm install
-
-# 拷贝整个应用程序到工作目录
-COPY . .
-
-# 构建应用程序
-RUN npm run build
+RUN npm install \
+    && npm run build
 
 
 FROM  nginx
