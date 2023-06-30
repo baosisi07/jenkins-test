@@ -16,6 +16,9 @@ FROM  nginx
 
 COPY --from=builder /app/ /app/
 RUN pwd && ls
+COPY dist /usr/share/nginx/html/
+COPY /dist /usr/share/nginx/html/
+COPY ./dist /usr/share/nginx/html/
 COPY /app/dist /usr/share/nginx/html/
 COPY /app/default.conf /etc/nginx/conf.d/
 
