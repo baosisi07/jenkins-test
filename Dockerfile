@@ -15,9 +15,8 @@ RUN npm install \
 FROM  nginx
 
 COPY --from=builder /app/ /app/
-
-WORKDIR /app/
-COPY ./dist /usr/share/nginx/html/
-COPY ./default.conf /etc/nginx/conf.d/
+RUN pwd && ls
+COPY /app/dist /usr/share/nginx/html/
+COPY /app/default.conf /etc/nginx/conf.d/
 
 EXPOSE 8099
