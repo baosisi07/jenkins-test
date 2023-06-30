@@ -17,9 +17,6 @@ FROM  nginx
 COPY --from=builder . .
 
 COPY dist /usr/share/nginx/html/
-COPY /dist /usr/share/nginx/html/
-COPY ./dist /usr/share/nginx/html/
-COPY /app/dist /usr/share/nginx/html/
-COPY /app/default.conf /etc/nginx/conf.d/
+COPY default.conf /etc/nginx/conf.d/
 
 EXPOSE 8099
