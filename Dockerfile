@@ -14,6 +14,8 @@ RUN npm install \
 
 FROM  nginx
 
+COPY . /app/
+
 WORKDIR /app/
 
 COPY ./dist /usr/share/nginx/html/
