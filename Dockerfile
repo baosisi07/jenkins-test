@@ -1,5 +1,5 @@
 # 使用 Node.js 16 作为基础镜像
-FROM node:16
+FROM node:16 as builder
 
 # 拷贝整个应用程序到工作目录
 COPY . /app/
@@ -14,11 +14,9 @@ RUN npm install \
 
 FROM  nginx
 
-COPY . /app/
+COPY --from=builder /app/ /app/
 
-WORKDIR /app/
-
-COPY ./dist /usr/share/nginx/html/
-COPY ./default.conf /etc/nginx/conf.d/
+COPY /app/dist /usr/share/nginx/html/
+COPY /app/default.conf /etc/nginx/conf.d/
 
 EXPOSE 8099
