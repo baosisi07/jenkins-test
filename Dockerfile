@@ -14,8 +14,8 @@ RUN npm install \
 
 FROM  nginx
 
-COPY --from=builder /app/ /app/
-RUN pwd && ls
+COPY --from=builder . .
+
 COPY dist /usr/share/nginx/html/
 COPY /dist /usr/share/nginx/html/
 COPY ./dist /usr/share/nginx/html/
