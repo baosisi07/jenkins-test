@@ -12,9 +12,9 @@ RUN npm install \
     && npm run build
 
 FROM  nginx
-COPY --from=builder . /app/
 
-COPY ./dist /usr/share/nginx/html/
+COPY --from=builder /app/dist /usr/share/nginx/html/
+
 COPY ./default.conf /etc/nginx/conf.d/
 
 EXPOSE 8099
