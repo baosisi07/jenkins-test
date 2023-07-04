@@ -11,10 +11,11 @@ COPY . /app/
 RUN npm install \
     && npm run build
 
-FROM  nginx:stable
+FROM  nginx
 
 COPY --from=builder /app/dist /usr/share/nginx/html/
 
-COPY ./default.conf /etc/nginx/conf.d/
+COPY ./vue-default.conf /etc/nginx/conf.d/
 
-EXPOSE 80
+
+EXPOSE 8099
